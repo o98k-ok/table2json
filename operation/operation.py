@@ -1,6 +1,6 @@
-class Sink(object):
+class Operation(object):
     def __init__(self) -> None:
         pass
 
-    def sink(self, info) -> None:
+    def do(self, info) -> str:
         pass

@@ -45,12 +45,11 @@ class GolangStruct(object):
 
 
 class GolangSink(Sink):
-    def __init__(self, structs) -> None:
+    def __init__(self) -> None:
         super().__init__()
-        self.structs = structs
     
-    def set(self) -> str:
-        return "\n\n".join([i.__str__() for i in self.structs])
+    def sink(self, structs:list[GolangStruct]) -> None:
+        print("\n\n".join([i.__str__() for i in structs]))
 
 
 if __name__ == "__main__":

@@ -1,10 +1,14 @@
 import input.pdf as src
 import output.go_struct as sink
-import format.golang as golang
+import operation.golang as golang
+import pipeline
 
 if __name__ == "__main__":
     filename = "testdata/main.pdf"
     inpt = src.PDFSrc(filename, [8, 9, 10, 11])
-    info = inpt.get()
-    outpt = sink.GolangSink(golang.format(info))
-    print(outpt.set())
+    outpt = sink.GolangSink()
+    op = golang.Golang()
+
+    pipe = pipeline.Pipeline(inpt, outpt, op)
+    pipe.run()
+

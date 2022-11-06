@@ -1,6 +1,15 @@
 from output.go_struct import *
+from .operation import Operation
 
-def format(tables) -> list:
+
+class Golang(Operation):
+    def __init__(self) -> None:
+        pass
+
+    def do(self, tables:list[list]) -> list[GolangStruct]:
+        return format(tables)
+
+def format(tables) -> list[GolangStruct]:
     res = []
     for i in range(len(tables)):
         name = "CustomStruct{}".format(i)

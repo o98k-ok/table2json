@@ -3,7 +3,7 @@ import prettytable as pt
 from .src import Src
 
 class PDFSrc(Src):
-    def __init__(self, filename, pages_id, fields_count=4):
+    def __init__(self, filename:str, pages_id:list[int], fields_count:int=4):
         super().__init__()
         self.filename = filename
         self.pages_id = pages_id
