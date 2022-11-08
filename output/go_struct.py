@@ -4,16 +4,20 @@ class Field(object):
     def __init__(self, name, tpe, tags, doc) -> None:
         ## tags {"json":["id", "omitempty"]}
         self.name = name
-        self.type = self.type_mapping(tpe)
+        self.type = self.type_mapping(self.remove_nonprintable(tpe).strip())
         self.tags = tags
         self.doc = doc
+    
+    def remove_nonprintable(self, string:str) -> str:
+        return ''.join([i for i in string if i.isprintable()])
 
     def type_mapping(self, tpe) -> str:
         typeMap = {
             "String": "string",
             "Integer": "int",
             "Float": "float32",
-            "Double": "float32"
+            "Double": "float32",
+            "Long": "int64",
         }
 
         res_type = "interface{}"

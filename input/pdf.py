@@ -10,7 +10,7 @@ class PDFSrc(Src):
         self.fields_count = fields_count
 
     def get(self) -> str:
-        return extract_tables_from(self.filename, self.pages_id, self.fields_count)
+        return extract_tables_from(self.filename, self.pages_id, self.fields_count, True)
 
 
 def _deblank(fields):
@@ -61,7 +61,7 @@ def extract_tables_from(file_name, pages_id, fields_count, test_mode=False):
             table = _deblank_for(table)
             if test_mode:
                 print(_create_prettytable(table))
-        res.append(table)
+            res.append(table)
     return res
                 
 
